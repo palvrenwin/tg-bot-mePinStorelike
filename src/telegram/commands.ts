@@ -3,7 +3,7 @@ import { sendMenu, sendMessage, sendMainButton, checkSubscription, getBotName } 
 import { BotEnv } from "../env";
 import menuItemsData from './menuItems.json';
 
-// Формируем объект callbackTexts для быстрого доступа к текстам
+// Creating a callbackTexts object for quick access to texts
 const callbackTexts = menuItemsData.menuItems.reduce(
   (acc: { [key: string]: { response_text: string; parse_mode?: "Markdown" | "HTML" | null } }, item) => {
     //@ts-ignore
@@ -13,7 +13,7 @@ const callbackTexts = menuItemsData.menuItems.reduce(
   {}
 );
 
-// Формируем меню из данных JSON
+// Creating menu from JSON data
 const menuContent = menuItemsData.menuItems.map(item => [{
     text: item.text,
     callback_data: item.callback_data
@@ -32,7 +32,7 @@ interface TelegramMessage {
     };
 }
 
-// Обработчик сообщения от пользователя
+// User message handler
 export const handleTelegramMessage = async (
     body: TelegramMessage,
     env: BotEnv
@@ -44,100 +44,94 @@ export const handleTelegramMessage = async (
     const callbackQuery = body.callback_query;
 
     let botName = "...";
-try {
-    botName = await getBotName(BOT_TOKEN) || " ";
-    
-} catch (error) {
-    console.error("Error fetching bot name:", error);
-}
-const formattedBotName = botName.replace('_', '\\_');
+    try {
+        botName = await getBotName(BOT_TOKEN) || " ";
+    } catch (error) {
+        console.error("Error fetching bot name:", error);
+    }
+    const formattedBotName = botName.replace('_', '\\_');
 
     if (callbackQuery) {
         const chatId = callbackQuery.from.id;
         const callbackData = callbackQuery.data;
 
-        // Проверка подписки
+        // Subscription check
         const isSubscribed = await checkSubscription(chatId, BOT_TOKEN, CHANNEL_CHAT_ID);
         if (!isSubscribed) {
             await sendMessage(
                 chatId,
-                `❌ Для использования бота подпишитесь на канал: ${LINK_SUBSCRIBED_CHANNEL}\n\nВаш бот: ${botName}`,
+                `❌ To use the bot, subscribe to the channel: ${LINK_SUBSCRIBED_CHANNEL}\n\nYour bot: ${botName}`,
                 BOT_TOKEN
             );
-            // При старте показываем кнопку 'Обновить'
+            // Show 'Refresh' button at start
             const buttons = [
-                [{ text: '🔄 Обновить', callback_data: 'update' }],
+                [{ text: '🔄 Refresh', callback_data: 'update' }],
             ];
 
             await sendMenu(chatId, buttons, BOT_TOKEN);
             return new Response("User not subscribed");
         }
 
-        // Обработка нажатий кнопок
+        // Handling button clicks
         if (callbackData === 'main_menu') {
-            // Показываем меню с кнопками из JSON
+            // Show menu with buttons from JSON
             await sendMenu(chatId, menuContent, BOT_TOKEN);
         } else if (callbackTexts[callbackData]) {
-            // Если это команда из JSON
+            // If it's a command from JSON
             const { response_text, parse_mode } = callbackTexts[callbackData];
             //@ts-ignore
-            await sendMessage(chatId, response_text, BOT_TOKEN, parse_mode || null); // Используем parse_mode из JSON
-            // После отправки текста показываем кнопку 'Главное меню'
+            await sendMessage(chatId, response_text, BOT_TOKEN, parse_mode || null); // Use parse_mode from JSON
+            // Show 'Main Menu' button after sending text
             await sendMainButton(chatId, BOT_TOKEN);
         } else if (callbackData === 'help') {
-            await sendMessage(chatId, "Помощь:\n/start - начать\n/help - помощь", BOT_TOKEN);
+            await sendMessage(chatId, "Help:\n/start - start\n/help - help", BOT_TOKEN);
             await sendMainButton(chatId, BOT_TOKEN);
         } else if (callbackData === 'update') {
-            await sendMessage(chatId, 'Данные обновлены!', BOT_TOKEN);
+            await sendMessage(chatId, 'Data updated!', BOT_TOKEN);
             await sendMainButton(chatId, BOT_TOKEN);
         } else {
-            await sendMessage(chatId, 'Неизвестная команда.', BOT_TOKEN);
+            await sendMessage(chatId, 'Unknown command.', BOT_TOKEN);
             await sendMainButton(chatId, BOT_TOKEN);
         }
     } else if (message) {
         const chatId = message.chat.id;
 
         if (message.text === '/start') {
-            // Проверка подписки при старте
+            // Subscription check at start
             const isSubscribed = await checkSubscription(chatId, BOT_TOKEN, CHANNEL_CHAT_ID);
 
-            // console.log("Sending start message...");
-            // console.log("Message content:", `Привет! Я бот 👉 ${botName}...`);
+            await sendMessage(
+                chatId,
+                `Hello! I am the bot 👉 ${formattedBotName}.  
+                *💼 Have a business? Reduce costs!*  
+                *🛠️ No business? Start without expenses!*  
+                \n🎯 Solutions for your business to save and earn money:  
+                ✅ **Become a partner of the "Your Business | PRIVACY Idea & Business Development" program.** 💸  
+                💡 **Launch a CMS-based site ready for advertising (possibly for free).**  
+                🔹 **Accept payments without a subscription fee via Telegram and website:**  
+                ☁️ Cloud-based cashier from 1.5% per payment. 
+                    📜 Fully compliant with regulations. 
+                    🏦 No cash register required at the start.  
+                🔹 **Cloud-based 1C without subscription fees.**  
+                🔹 **Comprehensive solutions:** website + 1C + advertising from **5000 rubles** per month.  
+                🔹 **Get up to 20,000 rubles cashback for advertising through Yandex.Direct!**  
+                🔹 ✨ **And much more...**
 
-    await sendMessage(
-        chatId,
-        `Привет! Я бот 👉 ${formattedBotName}.  
-        *💼 Есть бизнес — сократите расходы!*  
-        *🛠️ Нет бизнеса — начните без расходов!*  
-               
-        🎯 Решения для вашего бизнеса, которые помогут экономить и зарабатывать:  
-        ✅ **Станьте партнёром программы "Свой в бизнесе | PRIVACY развитие идей и дела".** 💸  
-        💡 **Запустите сайт на CMS, готовый к рекламе (возможно бесплатно).**  
-        🔹 **Принимайте платежи без абонентской платы через Telegram и сайт:**  
-        ☁️ Облачная касса от 1.5% за платеж. 
-            📜 Всё по 54-ФЗ. 
-            🏦 Без кассового аппарата на старте.  
-        🔹 **Облачная 1С без абонентской оплаты.**  
-        🔹 **Комплексные решения:** сайт + 1С + реклама от **5000 рублей** в месяц.  
-        🔹 **Возврат до 20 000 рублей на рекламу через Яндекс.Директ!**  
-        🔹 ✨ **И многое другое...**
-
-        💬 Хотите — берите, хотите — нет. Вы можете получить **500 рублей** за простое действие, а мы получим **1000 рублей** — это просто бонус.  
-        ⎯⎯⎯⎯⎯⎯⎯⎯⎯  
-        *Начните ваш бизнес — создавайте товары и услуги.* Реклама и продажи понадобятся вашему бизнесу. Сделайте первый шаг, и заработок станет результатом вашего развития. 😉`,
-        BOT_TOKEN, "Markdown"
-    ); 
-         
-
+                💬 Want it? Take it. Don't want it? No problem. You can get **500 rubles** for a simple action, and we get **1000 rubles** — just a bonus.  
+                ⎯⎯⎯⎯⎯⎯⎯⎯⎯  
+                *Start your business — create products and services.* Advertising and sales will be needed for your business. Take the first step, and earnings will follow your growth. 😉`,
+                BOT_TOKEN, "Markdown"
+            ); 
+            
             if (!isSubscribed) {
                 await sendMessage(
                     chatId,
-                    `❌ Для использования бота подпишитесь на канал: ${LINK_SUBSCRIBED_CHANNEL}`,
+                    `❌ To use the bot, subscribe to the channel: ${LINK_SUBSCRIBED_CHANNEL}`,
                     BOT_TOKEN
                 );
-                // При старте показываем кнопку 'Обновить'
+                // Show 'Refresh' button at start
                 const buttons = [
-                    [{ text: '🔄 Обновить', callback_data: 'update' }],
+                    [{ text: '🔄 Refresh', callback_data: 'update' }],
                 ];
 
                 await sendMenu(chatId, buttons, BOT_TOKEN);
@@ -145,16 +139,15 @@ const formattedBotName = botName.replace('_', '\\_');
                 return new Response('User not subscribed');
             }
 
-            // При успешной подписке показываем только кнопку 'Главное меню'
+            // Show only 'Main Menu' button upon successful subscription
             await sendMainButton(chatId, BOT_TOKEN);
         } else if (message.text === '/help') {
-            // Обработка команды /help
-            await sendMessage(chatId, "Помощь:\n/start - начать\n/help - помощь", BOT_TOKEN);
+            // Handling /help command
+            await sendMessage(chatId, "Help:\n/start - start\n/help - help", BOT_TOKEN);
             await sendMainButton(chatId, BOT_TOKEN);
         } else {
-            // Обработка команды /help
-            await sendMessage(chatId, "❓ Неизвестная команда. Помощь:\n/start - начать\n/help - помощь", BOT_TOKEN);
-           
+            // Handling unknown commands
+            await sendMessage(chatId, "❓ Unknown command. Help:\n/start - start\n/help - help", BOT_TOKEN);
         }
     }
 
