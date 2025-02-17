@@ -1,4 +1,5 @@
 //api.ts
+
 export const sendMessage = async (
   chatId: number,
   text: string,
@@ -19,10 +20,9 @@ export const sendMessage = async (
           body: JSON.stringify(payload),
       });
   } catch (error) {
-      console.error("Ошибка отправки сообщения:", error);
+      console.error("Error sending message:", error);
   }
 };
-
 
 export const sendMainButton = async (
     chatId: number,
@@ -31,10 +31,10 @@ export const sendMainButton = async (
     const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
     const payload = {
       chat_id: chatId,
-      text: "📜 Главное меню",
+      text: "📜 Main Menu",
       reply_markup: {
         inline_keyboard: [[
-          { text: 'Получить 500 рублей', callback_data: "get_card"},
+          { text: 'Get $190 ', callback_data: "get_card"},
           { text: "☰", callback_data: "main_menu" }
         ]],
       },
@@ -47,7 +47,7 @@ export const sendMainButton = async (
         body: JSON.stringify(payload),
       });
     } catch (error) {
-      console.error("Ошибка отправки главной кнопки:", error);
+      console.error("Error sending main button:", error);
     }
   };
 
@@ -59,7 +59,7 @@ export const sendMenu = async (
   const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
   const payload = {
     chat_id: chatId,
-    text: "Выберите действие:",
+    text: "Choose an action:",
     reply_markup: {
       inline_keyboard: menuContent,
     },
@@ -72,10 +72,9 @@ export const sendMenu = async (
       body: JSON.stringify(payload),
     });
   } catch (error) {
-    console.error("Ошибка отправки меню:", error);
+    console.error("Error sending menu:", error);
   }
 };
-
 
 export async function checkSubscription(userId: number, BOT_TOKEN: string, CHANNEL_CHAT_ID: string): Promise<boolean> {
   const url = `https://api.telegram.org/bot${BOT_TOKEN}/getChatMember?chat_id=${CHANNEL_CHAT_ID}&user_id=${userId}`;
@@ -102,13 +101,13 @@ export const getBotName = async (botToken: string): Promise<string> => {
     const data:any  = await response.json();
     
     if (data.ok && data.result) {
-      return data.result.first_name || 'Бот';
+      return data.result.first_name || 'Bot';
     } else {
-      console.error('Ошибка при получении имени бота:', data.description);
-      return 'Бот';
+      console.error('Error getting bot name:', data.description);
+      return 'Bot';
     }
   } catch (error) {
-    console.error('Ошибка при запросе к Telegram API:', error);
-    return 'Бот';
+    console.error('Error querying Telegram API:', error);
+    return 'Bot';
   }
 };
