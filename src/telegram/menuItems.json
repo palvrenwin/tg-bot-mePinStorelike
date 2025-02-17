@@ -2,7 +2,7 @@
   "menuItems": [
     {
       "text": "1️⃣  <a href=\"https://storelikepinterest.pages.dev/init-payment/product-1/\">Get for $150</a>",
-      "callback_data": "get_website",
+      "callback_data": "get_card",
       "response_text": "🚀 Ready-to-Use Business Website — Launch Ads Instantly! We build fast, smart websites with a custom CMS, AI assistants, chatbots, and integrated payments. 💡 Edit content on the go — adapt your site for any niche even while ads are live. 🤖 AI assistant automates messaging, content updates, and payment processing. 📢 Start advertising immediately — fully optimized for conversions. 🔥 Automation. Growth. More Sales.",
       "parse_mode": "HTML"
     },
