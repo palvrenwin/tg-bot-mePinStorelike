@@ -1,6 +1,6 @@
 $schema = "node_modules/wrangler/config-schema.json"
 
-name = "worker-telegram-bot-cloudflare"
+name = "worker-telegram-bot-cloudflare-mePinStorelike"
 main = "src/index.ts"
 compatibility_date = "2025-01-24"
 compatibility_flags = ["nodejs_compat"]
