@@ -1,6 +1,6 @@
 {
-	"name": "worker-telegram-bot-cloudflare",
-	"version": "0.0.0",
+	"name": "worker-tg-bot-mePinStorelike",
+	"version": "0.0.1",
 	"private": true,
 	"scripts": {
 		"deploy": "wrangler deploy",
