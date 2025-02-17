@@ -33,7 +33,10 @@ export const sendMessage = async (
         chat_id: chatId,
         text: "📜 Главное меню",
         reply_markup: {
-          inline_keyboard: [[{ text: "☰", callback_data: "main_menu" }]],
+          inline_keyboard: [[
+            { text: 'Получить 500 рублей', callback_data: "get_card"},
+            { text: "☰", callback_data: "main_menu" }
+          ]],
         },
       };
     
