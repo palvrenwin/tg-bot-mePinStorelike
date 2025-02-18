@@ -34,7 +34,7 @@ export const sendMainButton = async (
       text: "📜 Main Menu",
       reply_markup: {
         inline_keyboard: [[
-          { text: 'Get $190 ', callback_data: "get_card"},
+          { text: 'Get $190 ', callback_data: "get_first_content"},
           { text: "☰", callback_data: "main_menu" }
         ]],
       },
