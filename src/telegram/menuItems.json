@@ -8,30 +8,32 @@
     },
     {
       "text": "🚀 Your Business Online in 3 Days! AI-Powered Website + Bot + Assistant",
-      "callback_data": "get_bot_website",
-      "response_text": "🚀 <b>Launch your business online in just 3 days!</b>\n\nWe create a website, connect a chatbot, and integrate an AI assistant to attract clients, accept payments, and automate interactions. No programmers needed – easily edit content, optimize ads, and scale your business on the go!\n\n<b>🔥 Limited-time offer!</b>\n\n<b>✅ What’s included:</b>\n✅ <b>A ready-to-use website</b> — instantly accessible via a domain name.\n✅ <b>AI-powered chatbot & assistant</b> — automates lead generation and client interactions.\n✅ <b>Payment acceptance & online booking</b> — streamline transactions effortlessly.\n✅ <b>Instant content updates</b> — tweak ads, headlines, and offers in real time.\n✅ <b>Built-in blog & RSS feed</b> — automate social media content distribution.\n✅ <b>Pinterest integration</b> — set dynamic images for branding.\n✅ <b>SEO & analytics</b> — optimize performance and track conversions.\n\n<b>🔥 Additional services:</b>\n- <b>Domain name – $12</b>. Secure your custom domain with affordable renewal.\n- <b>Express ad setup – $55</b>. Get leads from Yandex Direct & Google Ads fast.\n- <b>Advanced chatbot setup – $12</b>. Automate messages in Telegram.\n- <b>Custom modifications – from $35</b>. Tailor your site to your needs.\n\n<b>📝 How to participate:</b>\n1️⃣ Subscribe to our <a href='https://t.me/mePinStorelikeBot'>Telegram channel</a>.\n2️⃣ Follow our <a href='https://www.pinterest.com/palvrenwin/'>Pinterest blog</a>.\n\n🚀 <b>Start now & scale your business effortlessly!</b>",      "parse_mode": "Markdown"
+      "callback_data": "get_product_1",
+      "response_text": "🚀 <b>Launch your business online in just 3 days!</b>\n\nWe create a website, connect a chatbot, and integrate an AI assistant to attract clients, accept payments, and automate interactions. No programmers needed – easily edit content, optimize ads, and scale your business on the go!\n\n<b>🔥 Limited-time offer!</b>\n\n<b>✅ What’s included:</b>\n✅ <b>A ready-to-use website</b> — instantly accessible via a domain name.\n✅ <b>AI-powered chatbot & assistant</b> — automates lead generation and client interactions.\n✅ <b>Payment acceptance & online booking</b> — streamline transactions effortlessly.\n✅ <b>Instant content updates</b> — tweak ads, headlines, and offers in real time.\n✅ <b>Built-in blog & RSS feed</b> — automate social media content distribution.\n✅ <b>Pinterest integration</b> — set dynamic images for branding.\n✅ <b>SEO & analytics</b> — optimize performance and track conversions.\n\n<b>🔥 Additional services:</b>\n- <b>Domain name – $12</b>. Secure your custom domain with affordable renewal.\n- <b>Express ad setup – $55</b>. Get leads from Yandex Direct & Google Ads fast.\n- <b>Advanced chatbot setup – $12</b>. Automate messages in Telegram.\n- <b>Custom modifications – from $35</b>. Tailor your site to your needs.\n\n<b>📝 How to participate:</b>\n1️⃣ Subscribe to our <a href='https://t.me/mePinStorelikeBot'>Telegram channel</a>.\n2️⃣ Follow our <a href='https://www.pinterest.com/palvrenwin/'>Pinterest blog</a>.\n\n🚀 <b>Start now & scale your business effortlessly!</b>",      
+      "parse_mode": "Markdown"
+     
     },
     {
       "text": "Website CMS + 1C + Marketplaces + Advertising — All-in-One",
-      "callback_data": "get_1c_marketplace",
+      "callback_data": "get_product_2",
       "response_text": "🎉 Website CMS + Bot Assistent + Marketplaces + Advertising — All-in-One! 🚀\n\nNow you can get a fully ready-to-use website that not only integrates with 1C and marketplaces but is also set up for effective advertising! 💼📊\n\n<b>What you get:</b>\n\n<b>1️⃣ Ready-to-use CMS website</b> — fully configured and optimized for your business. A user-friendly system that requires no special knowledge. 🌐\n\n<b>2️⃣ BOT assistent integration</b> — automates all business processes and syncs with your accounting system for efficiency and accuracy. 📑💼\n\n<b>3️⃣ Marketplace integration</b> — your products will be available on popular platforms like Ozon, Wildberries, and more. 🛒📦\n\n<b>4️⃣ Advertising-ready setup</b> — the website is already optimized for customer acquisition. Install ad codes, add banners, and start getting traffic! 📢👀\n\n<b>5️⃣ Yandex.Direct integration</b> — launch ads and attract new customers directly through Yandex.Direct! 📈💰\n\n🔥 All in one solution! Get a business that works for you!\n\n<b>Special Offer:</b>\nThe first payment for the service is $50 per month for the first 2 years, with a 50% discount afterward. <a href='https://storelikepinterest.pages.dev/init-payment/product-3'>Fill out the application and get access!</a> 📲",
       "parse_mode": "HTML"
     },
     {
       "text": "$25/month - CMS Website + Yandex.Direct Setup + Consultation",
-      "callback_data": "get_pay_site",
+      "callback_data": "get_product_3",
       "response_text": "CMS Website + Yandex.Direct Account Setup + Consultation (for $25/month):\n\n<a href=\"https://forma.tbank.ru/online/sso/fc489cb6-a577-42d9-85e1-b96a6be23a0c\">Subscribe for $25/month</a>.",
       "parse_mode": "HTML"
     },
     {
       "text": "$55/month - CMS Website + Expert for 3 Months + Ad Campaign Management + Yandex.Direct Setup",
-      "callback_data": "get_pay_ads_yandex",
+      "callback_data": "get_product_4",
       "response_text": "CMS Website + Yandex.Direct Setup + Ad Campaign Management with an Expert for 3 Months (for $35/month):\n\n<a href=\"https://forma.tbank.ru/online/sso/4acd5b2e-14be-4cb6-b0e9-cdefca5cc07a\">Subscribe for $35/month</a>.",
       "parse_mode": "HTML"
     },
     {
       "text": "How to Get Up to $500 Back on Advertising",
-      "callback_data": "get_domain_info",
+      "callback_data": "get_product_5",
       "response_text": "<b>Important Information About Domain Names and Yandex.Direct Promotions!</b>\n\nDid you know that Yandex.Direct often runs promotions where you can get up to <b>$500</b> for advertising? 💰 This is a great opportunity to save money and attract more clients!\n\nBut there is one crucial <b>BUT</b>: if your website uses a third-level domain name, you won’t be able to participate in these promotions and may lose money.\n\nTo avoid this, check your domain name. Using a second-level domain not only allows you to participate in promotions but also makes your website look more professional and trustworthy.\n\n<b>Special Offer:</b>\nGet a second-level domain + setup on a ready-to-go website for just <b>$19</b>.\n\n✅ <a href=\"https://storelike.ru/init-payment/add-domain\">Pay $19</a>",
       "parse_mode": "HTML"
     },
