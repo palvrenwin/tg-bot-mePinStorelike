@@ -189,9 +189,7 @@ export const handleTelegramMessage = async (
             // Handling /help command
             await sendMessage(chatId, "Help:\n/start - start\n/help - help", BOT_TOKEN);
             await sendMainButton(chatId, BOT_TOKEN);
-        } 
-        
-        else if (message.text === '/get_first_content') {
+        } else if (message.text === '/get_first_content') {
             // Проверка подписки
             const isSubscribed = await checkSubscription(chatId, BOT_TOKEN, CHANNEL_CHAT_ID);
             if (!isSubscribed) {
