@@ -26,19 +26,23 @@ const get_start_content = `
 [🛒 Buy Now](https://storelikepinterest.pages.dev/init-payment/product-1/) — Click here to make a payment and start your business!`;
 
 const get_first_content = `
-*💼 Have a business? Reduce costs!*  
-*🛠️ No business? Start without expenses!*  
-\n🎯 Solutions for your business to save and earn money:  
-✅ **Become a partner of the "Your Business | PRIVACY Idea & Business Development" program.** 💸  
-💡 **Launch a CMS-based site ready for advertising (possibly for free).**  
-🔹 **Accept payments without a subscription fee via Telegram and website:**  
-☁️ Cloud-based cashier from 1.5% per payment. 
-    📜 Fully compliant with regulations. 
-    🏦 No cash register required at the start.  
-🔹 **Cloud-based 1C without subscription fees.**  
-🔹 **Comprehensive solutions:** website + 1C + advertising from **5000 rubles** per month.  
-🔹 **Get up to 20,000 rubles cashback for advertising through Yandex.Direct!**  
-🔹 ✨ **And much more...**
+🚀 **Get Your Business Online in Just 3 Days!**
+
+1️⃣ **Your business online in 3 days!**  
+We create your website, integrate a chatbot and AI assistant so your customers can start ordering from day one.
+
+2️⃣ **Fast ad setup & instant content adaptation!**  
+Your ad campaign isn’t delivering results? Just update headlines, texts, and offers directly in the CMS – no developers needed!
+
+3️⃣ **Perfect for any niche!**  
+E-commerce, services, info business, B2B – the site adapts effortlessly to any industry, testing offers on the go.
+
+4️⃣ **AI analyzes your audience and boosts sales!**  
+Track customer behavior and adjust your strategy in real time – AI will show you what works best.
+
+5️⃣ **Maximum flexibility – manage content on the go!**  
+Update offers, texts, and headlines in the middle of your ad campaign – adapt to your audience and ad platform algorithms with just one click.
+
 
 💬 Want it? Take it. Don't want it? No problem. You can get **500 rubles** for a simple action, and we get **1000 rubles** — just a bonus.  
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯  
@@ -122,8 +126,8 @@ export const handleTelegramMessage = async (
             // Show menu with buttons from JSON
             await sendMessage(
                 chatId,
-                `Hello! I am the bot 👉 ${formattedBotName}.  
-                ${get_start_content}
+                `Hello! I am the bot 👉 **${formattedBotName}**.  
+                ${get_first_content}
                 `,
                 BOT_TOKEN, "Markdown"
             ); 
