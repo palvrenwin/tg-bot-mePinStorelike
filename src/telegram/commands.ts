@@ -189,7 +189,39 @@ export const handleTelegramMessage = async (
             // Handling /help command
             await sendMessage(chatId, "Help:\n/start - start\n/help - help", BOT_TOKEN);
             await sendMainButton(chatId, BOT_TOKEN);
-        } else {
+        } 
+        
+        else if (message.text === '/get_first_content') {
+            // Проверка подписки
+            const isSubscribed = await checkSubscription(chatId, BOT_TOKEN, CHANNEL_CHAT_ID);
+            if (!isSubscribed) {
+                await sendMessage(
+                    chatId,
+                    `❌ To use the bot, subscribe to the channel: ${LINK_SUBSCRIBED_CHANNEL}`,
+                    BOT_TOKEN
+                );
+                // Показываем кнопку "Обновить" в случае, если пользователь не подписан
+                const buttons = [
+                    [{ text: '🔄 Refresh', callback_data: 'update' }],
+                ];
+                await sendMenu(chatId, buttons, BOT_TOKEN);
+                return new Response('User not subscribed');
+            }
+        
+            // Отправляем первое содержимое, если подписка есть
+            await sendMessage(
+                chatId,
+                `Hello! I am the bot 👉 **${formattedBotName}**.  
+                ${get_first_content}
+                `,
+                BOT_TOKEN, "Markdown"
+            ); 
+        
+            // Показываем основное меню после отправки контента
+            await sendMainButton(chatId, BOT_TOKEN);
+        }        
+        
+        else {
             // Handling unknown commands
             await sendMessage(chatId, "❓ Unknown command. Help:\n/start - start\n/help - help", BOT_TOKEN);
         }
